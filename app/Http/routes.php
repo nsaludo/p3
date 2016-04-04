@@ -17,5 +17,7 @@ Route::get('/', function () {
 
 Route::get('/users','UsersController@index');
 Route::post('/users','UsersController@post');
+Route::post('/users/download','UsersController@download');
+
 Route::get('/lorem','LoremController@index');
 Route::get('/lorem','LoremController@post');

@@ -13,12 +13,10 @@ class UsersController extends Controller
     public function index()
     {
         //return view('users.index');
-        $fakeUsers = $this->generateFakeUsers(1, 0, 0, 0,0,0,0);
+        //$fakeUsers = $this->generateFakeUsers(1, 1, 1, 1, 1, 1, 1);
 
-        return view('users.index')
-            ->with('fakeUsers', $fakeUsers);
-    //$jsonAr = json_encode($userAr, JSON_PRETTY_PRINT);
-//
+        return view('users.index');
+
     }
 
     private function getGender(){
@@ -44,32 +42,44 @@ class UsersController extends Controller
         for ($i=0; $i<=$numberOfUsers-1; $i++) {
             $userGender=$this->getGender();
             if ($userGender == "male") {
-                $fakeUsers[$i] = Array("FirstName" => $faker->firstNameMale);
+                $fakeUsers[$i] = Array('FirstName' => $faker->firstNameMale);
             } else {
-                $fakeUsers[$i] = Array("FirstName" => $faker->firstNameFemale);
+                $fakeUsers[$i] = Array('FirstName' => $faker->firstNameFemale);
             }
-            $fakeUser[$i] = array_merge($fakeUsers[$i], Array('LastName' => $faker->lastName));
+            $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('LastName' => $faker->lastName));
             if ($homeAddress == 1) {
-                $fakeUser[$i] = array_merge($fakeUsers[$i], Array('Address' => $faker->streetAddress.', '.$faker->city.', '.$faker->stateAbbr.', '.$faker->country));
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Address' => $faker->streetAddress.', '.$faker->city.', '.$faker->stateAbbr.', '.$faker->country));
+            } else {
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Address' => ''));
             }
             if ($emailAddress == 1) {
-                $fakeUser[$i] = array_merge($fakeUsers[$i], Array('EmailAddress' => $faker->email));
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('EmailAddress' => $faker->email));
+            } else {
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('EmailAddress' => ''));
             }
             if ($phoneNumber == 1) {
-                $fakeUser[$i] = array_merge($fakeUsers[$i], Array('PhoneNumber' => $faker->phoneNumber));
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhoneNumber' => $faker->phoneNumber));
+            } else {
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhoneNumber' => ''));
             }
             if ($gender == 1) {
-                $fakeUser[$i] = array_merge($fakeUsers[$i], Array('Gender' => $userGender));
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Gender' => $userGender));
+            } else {
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Gender' => ''));
             }
             if ($birthday == 1) {
-				$fakeUsers[$i] = array_merge($fakeUsers[$i], Array("Birthday" => $faker->dateTimeThisCentury->format("Y-m-d")));
-		    }
+				$fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Birthday' => $faker->dateTimeThisCentury->format("Y-m-d")));
+		    } else {
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Birthday' => ''));
+            }
             if ($photoUrl == 1) {
                 if ($userGender == "male") {
-                    $fakeUsers[$i] = array_merge($fakeUsers[$i], Array("PhotoUrl" => $randomMalePhotoUrl[$randomNumAr[$i]]));
+                    $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhotoUrl' => $randomMalePhotoUrl[$randomNumAr[$i]]));
                 } else {
-                    $fakeUsers[$i] = array_merge($fakeUsers[$i], Array("PhotoUrl" => $randomFemalePhotoUrl[$randomNumAr[$i]]));
+                    $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhotoUrl' => $randomFemalePhotoUrl[$randomNumAr[$i]]));
                 }
+            } else {
+                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhotoUrl' => ''));
             }
         }
         return($fakeUsers);
@@ -116,9 +126,11 @@ class UsersController extends Controller
             ->with('jsonFile', $jsonFile);
     }
 
-    public function download()
+    public function download(Request $request)
     {
-        //
+        header('Content-disposition: attachment; filename=randomUsers.json');
+        header('Content-type: text/plain');
+        echo $request['jsonFile'];
     }
 
 }

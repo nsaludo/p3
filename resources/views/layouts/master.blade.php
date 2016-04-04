@@ -66,4 +66,4 @@
     @yield('body')
 
 </body>
-</html>`
+</html>
