@@ -45,8 +45,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {!! Form::checkbox('homeAddress', 1, true) !!}
-                                    {!! Form::label('homeAddress', 'Include home Address') !!}<br>
+                                    {!! Form::label('homeAddress', 'Include home Address') !!}
+                                    {!! Form::checkbox('homeAddress', 1, true) !!}<br>
                                     <span class="error">
                                         {{ $errors->first('homeAddress') }}
                                     </span>
@@ -54,8 +54,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {{ Form::checkbox('emailAddress',1, true) }}
-                                    {{ Form::label('emailAddress', 'Include Email Address') }}<br>
+                                    {{ Form::label('emailAddress', 'Include Email Address') }}
+                                    {{ Form::checkbox('emailAddress',1, true) }}<br>
                                     <span class="error">
                                         {{ $errors->first('emailAddress') }}
                                     </span>
@@ -63,8 +63,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {{ Form::checkbox('phoneNumber', 1, true ) }}
-                                    {{ Form::label('phoneNumber', 'Include Phone') }}<br>
+                                    {{ Form::label('phoneNumber', 'Include Phone') }}
+                                    {{ Form::checkbox('phoneNumber', 1, true ) }}<br>
                                     <span class="error">
                                         {{ $errors->first('phoneNumber') }}
                                     </span>
@@ -74,8 +74,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {{ Form::checkbox('gender', 1, true) }}
-                                    {{ Form::label('gender', 'Include Gender') }}<br>
+                                    {{ Form::label('gender', 'Include Gender') }}
+                                    {{ Form::checkbox('gender', 1, true) }}<br>
                                     <span class="error">
                                         {{ $errors->first('gender') }}
                                     </span>
@@ -83,8 +83,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {{ Form::checkbox('photoUrl', 1, true) }}
-                                    {{ Form::label('photoUrl', 'Include Photo') }}<br>
+                                    {{ Form::label('photoUrl', 'Include Photo') }}
+                                    {{ Form::checkbox('photoUrl', 1, true) }}<br>
                                     <span class="error">
                                         {{ $errors->first('photoUrl') }}
                                     </span>
@@ -92,8 +92,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {{ Form::checkbox('birthday', 1, true) }}
-                                    {{ Form::label('birthday', 'Include Birthdate') }}<br>
+                                    {{ Form::label('birthday', 'Include Birthdate') }}
+                                    {{ Form::checkbox('birthday', 1, true) }}<br>
                                     <span class="error">
                                         {{ $errors->first('birthday') }}
                                     </span>
@@ -112,71 +112,56 @@
                     </div>
                     @endif
                 </div>
-
             </div>
-
             {!! Form::close() !!}
-
         </div>
     </div>
-
-
-
-
-
 @stop
 
 @section('results')
-<p class="bottom-sep"></p>
-
-@if (isset($fakeUsers))
-
-        <div class="row" >
-            <div class="col-md-2 col-md-offset-5">
-                {!! Form::open(array('url' => 'users/download'))  !!}
-                    {{ Form::hidden('jsonFile', "'{!!$jsonFile!!}'") }}
-                {{ Form::submit('Download Json File', array('class' => 'btn btn-default btn-xs btn-block')) }}
+    <div class="container">
+        @if (isset($fakeUsers))
+            <div class="row" >
+                <div class="col-md-2 col-md-offset-5">
+                    {!! Form::open(array('url' => 'users/download'))  !!}
+                        {{ Form::hidden('jsonFile', "'{!!$jsonFile!!}'") }}
+                    {{ Form::submit('Download Json File', array('class' => 'btn btn-default btn-xs btn-block')) }}
+                </div>
+                <br>
             </div>
-<br>
-        </div>
 
-	@for ($i = 0 ; $i < count($fakeUsers) ; $i++)
-        <div class="row">
-            <div class="col-md-3"></div>
-
-            <div class="col-md-5">
-        {!!$fakeUsers[$i]['FirstName']!!} {!!$fakeUsers[$i]['LastName']!!}<br>
-        @if ($fakeUsers[$i]['Gender'] != 'Null')
-            {!!$fakeUsers[$i]['Gender']!!}<br>
-        @endif
-        @if ($fakeUsers[$i]['Address'] != 'Null')
-            {!!$fakeUsers[$i]['Address']!!}<br>
-        @endif
-        @if ($fakeUsers[$i]['EmailAddress'] != 'Null')
-            {!!$fakeUsers[$i]['EmailAddress']!!}<br>
-        @endif
-        @if ($fakeUsers[$i]['PhoneNumber'] != 'Null')
-            {!!$fakeUsers[$i]['PhoneNumber']!!}<br>
-        @endif
-        @if ($fakeUsers[$i]['Birthday'] != 'Null')
-            {!!$fakeUsers[$i]['Birthday']!!}<br>
+            @for ($i = 0 ; $i < count($fakeUsers) ; $i++)
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-5">
+                        {!!$fakeUsers[$i]['FirstName']!!} {!!$fakeUsers[$i]['LastName']!!}<br>
+                        @if ($fakeUsers[$i]['Gender'] != 'Null')
+                            {!!$fakeUsers[$i]['Gender']!!}<br>
+                        @endif
+                        @if ($fakeUsers[$i]['Address'] != 'Null')
+                            {!!$fakeUsers[$i]['Address']!!}<br>
+                        @endif
+                        @if ($fakeUsers[$i]['EmailAddress'] != 'Null')
+                            {!!$fakeUsers[$i]['EmailAddress']!!}<br>
+                        @endif
+                        @if ($fakeUsers[$i]['PhoneNumber'] != 'Null')
+                            {!!$fakeUsers[$i]['PhoneNumber']!!}<br>
+                        @endif
+                        @if ($fakeUsers[$i]['Birthday'] != 'Null')
+                            {!!$fakeUsers[$i]['Birthday']!!}<br>
+                        @endif
+                    </div>
+                    <div class="col-md-1">
+                        @if ($fakeUsers[$i]['PhotoUrl'] != 'Null')
+                            <img src={!!$fakeUsers[$i]['PhotoUrl']!!}>
+                        @endif
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+                <br>
+            @endfor
         @endif
     </div>
-
-        <div class="col-md-1">
-
-    @if ($fakeUsers[$i]['PhotoUrl'] != 'Null')
-    <img src={!!$fakeUsers[$i]['PhotoUrl']!!}>
-    @endif
-        </div>
-        <div class="col-md-3"></div>
-
-    </div>
-
-    <br>
-	@endfor
-@endif
-@stop
-
-@section('body')
 @stop
