@@ -1,0 +1,52 @@
+/* Make the xkcd comic strip as the background - permission to use image as background was sent to xkcd@xkcd.com */
+body {
+    padding: 20px;
+}
+
+.title {
+    padding-top: 10px;
+    text-align: center;
+}
+
+#results {
+    color: black
+    padding-top: 10px;
+    background-color: white;
+    border: 5px solid;
+}
+
+/* display errors in red */
+.error {
+    color: #FF0000;
+    font-size: 9pt;
+    margin-left: 0;
+}
+
+/* http://mystrd.at/modern-clean-css-sticky-footer */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+footer {
+    position: absolute;
+    text-align: center;
+    background-color: orange;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    padding: 15px;
+
+}
+/* End Sticky Footer */
+
+/* responsive design for header to not be covered by navbar when viewing on mobile */
+@media only screen and (max-width: 500px) {
+    header {
+        padding-top: 5px;
+        margin-top: 5px;
+    }
+}
