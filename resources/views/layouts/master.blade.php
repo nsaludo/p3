@@ -49,12 +49,6 @@
         @yield('content')
     </section>
 
-    <section>
-        {{-- Results of generators will be yielded here --}}
-        @yield('results')
-    </section>
-
-
     <footer>
         Copyright &copy; {{ date('Y') }}  Nora Saludo
     </footer>

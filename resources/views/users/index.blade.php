@@ -116,9 +116,7 @@
             {!! Form::close() !!}
         </div>
     </div>
-@stop
 
-@section('results')
     <div class="container">
         @if (isset($fakeUsers))
             <div class="row" >
