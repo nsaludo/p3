@@ -14,14 +14,20 @@ body {
     margin-left: 0;
 }
 
+.results {
+    padding-top: 20px;
+}
+
 /* http://mystrd.at/modern-clean-css-sticky-footer */
 html {
     position: relative;
     min-height: 100%;
 }
+
 body {
     margin: 0 0 100px; /* bottom = footer height */
 }
+
 footer {
     position: absolute;
     text-align: center;

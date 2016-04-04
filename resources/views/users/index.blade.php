@@ -117,14 +117,16 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container results">
         @if (isset($fakeUsers))
             <div class="row" >
                 <div class="col-md-2 col-md-offset-5">
                     {!! Form::open(array('url' => 'users/download'))  !!}
-                        {{ Form::hidden('jsonFile', "'{!!$jsonFile!!}'") }}
+                        {{ Form::hidden('jsonFile',$jsonFile)}}
                     {{ Form::submit('Download Json File', array('class' => 'btn btn-default btn-xs btn-block')) }}
                 </div>
+
+
                 <br>
             </div>
 
