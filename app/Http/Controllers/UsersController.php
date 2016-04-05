@@ -36,9 +36,13 @@ class UsersController extends Controller
     {
         $faker = Faker::create();
         $fakeUsers = Array();
-        $randomFemalePhotoUrl=$this->getPhotoUrlData('data/female.json');
-        $randomMalePhotoUrl=$this->getPhotoUrlData('data/male.json');
-        $randomNumAr=$this->getUniqNums(0,110,$numberOfUsers);
+        /* Get an Array of photo urls if phto urls is checked */
+        if ($photoUrl == 1) {
+            $randomFemalePhotoUrl=$this->getPhotoUrlData('data/female.json');
+            $randomMalePhotoUrl=$this->getPhotoUrlData('data/male.json');
+            $randomNumAr=$this->getUniqNums(0,110,$numberOfUsers);
+        }
+
         for ($i=0; $i<=$numberOfUsers-1; $i++) {
             $userGender=$this->getGender();
             if ($userGender == "male") {
@@ -49,37 +53,25 @@ class UsersController extends Controller
             $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('LastName' => $faker->lastName));
             if ($homeAddress == 1) {
                 $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Address' => $faker->streetAddress.', '.$faker->city.', '.$faker->stateAbbr.', '.$faker->country));
-            } else {
-                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Address' => ''));
             }
             if ($emailAddress == 1) {
                 $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('EmailAddress' => $faker->email));
-            } else {
-                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('EmailAddress' => ''));
             }
             if ($phoneNumber == 1) {
                 $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhoneNumber' => $faker->phoneNumber));
-            } else {
-                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhoneNumber' => ''));
             }
             if ($gender == 1) {
                 $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Gender' => $userGender));
-            } else {
-                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Gender' => ''));
             }
             if ($birthday == 1) {
 				$fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Birthday' => $faker->dateTimeThisCentury->format("Y-m-d")));
-		    } else {
-                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Birthday' => ''));
-            }
+		    } 
             if ($photoUrl == 1) {
                 if ($userGender == "male") {
                     $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhotoUrl' => $randomMalePhotoUrl[$randomNumAr[$i]]));
                 } else {
                     $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhotoUrl' => $randomFemalePhotoUrl[$randomNumAr[$i]]));
                 }
-            } else {
-                $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhotoUrl' => ''));
             }
         }
         return($fakeUsers);

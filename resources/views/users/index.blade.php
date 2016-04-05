@@ -14,6 +14,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h1 class="title">Random User Generator</h1>
+                <h5 class="title">Generate up to 100 test users for your application with profile photos that you can download.</h5>
                 <hr>
             </div>
         </div>
@@ -136,24 +137,24 @@
                     </div>
                     <div class="col-md-5">
                         {!!$fakeUsers[$i]['FirstName']!!} {!!$fakeUsers[$i]['LastName']!!}<br>
-                        @if ($fakeUsers[$i]['Gender'] != 'Null')
+                        @if (isset($fakeUsers[$i]['Gender']))
                             {!!$fakeUsers[$i]['Gender']!!}<br>
                         @endif
-                        @if ($fakeUsers[$i]['Address'] != 'Null')
+                        @if (isset($fakeUsers[$i]['Address']))
                             {!!$fakeUsers[$i]['Address']!!}<br>
                         @endif
-                        @if ($fakeUsers[$i]['EmailAddress'] != 'Null')
+                        @if (isset($fakeUsers[$i]['EmailAddress']))
                             {!!$fakeUsers[$i]['EmailAddress']!!}<br>
                         @endif
-                        @if ($fakeUsers[$i]['PhoneNumber'] != 'Null')
+                        @if (isset($fakeUsers[$i]['PhoneNumber']))
                             {!!$fakeUsers[$i]['PhoneNumber']!!}<br>
                         @endif
-                        @if ($fakeUsers[$i]['Birthday'] != 'Null')
+                        @if (isset($fakeUsers[$i]['Birthday']))
                             {!!$fakeUsers[$i]['Birthday']!!}<br>
                         @endif
                     </div>
                     <div class="col-md-1">
-                        @if ($fakeUsers[$i]['PhotoUrl'] != 'Null')
+                        @if (isset($fakeUsers[$i]['PhotoUrl']))
                             <img src={!!$fakeUsers[$i]['PhotoUrl']!!}>
                         @endif
                     </div>

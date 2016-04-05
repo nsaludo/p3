@@ -22,12 +22,11 @@ class LoremController extends Controller
     public function post(Request $request)
     {
         //dd($request->all());
-        //$this->validate($request, [
-        //    'numberOfPharagraps' => 'required|numeric|min:1|max:10',
-        //]);
+        $this->validate($request, [
+            'numberOfParagraphs' => 'required|numeric|min:1|max:10'
+        ]);
 
         $genLorem = new Generator();
-        //$loremData = $genLorem->getParagraphs(1);
         $loremData = $genLorem->getParagraphs($request['numberOfParagraphs']);
 
         $jsonFile = json_encode($loremData , JSON_PRETTY_PRINT);
@@ -37,6 +36,7 @@ class LoremController extends Controller
             ->with('jsonFile', $jsonFile);
     }
 
+    /*Function to download the generated lorem ipsum in Json format */
     public function download(Request $request)
     {
         header('Content-disposition: attachment; filename=loremIpsum.json');
