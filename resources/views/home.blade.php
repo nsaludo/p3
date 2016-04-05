@@ -19,7 +19,7 @@
                 <a href="http://p3.donengs.com/lorem" class="btn btn-default" role="button">Get me Lorem Ipsum!</a>
             </div>
             <div class="col-sm-4">
-                <h3 class="project_title"> <h3>Random User Generator</h3>
+                <h3 class="project_title">Random User Generator</h3>
                 <p>Surely you will need to populate your demo website with users. Random User Generator to the rescue! Generate test users complete with profiles!</p>
                 <a href="http://p3.donengs.com/users" class="btn btn-default" role="button">Get Me Users!</a>
             </div>
