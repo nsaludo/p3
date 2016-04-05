@@ -12,12 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/users','UsersController@index');
+Route::get('/lorem','LoremController@getIndex');
+Route::post('/lorem','LoremController@post');
+Route::post('/lorem/download','LoremController@download');
+
+Route::get('/users','UsersController@getIndex');
 Route::post('/users','UsersController@post');
 Route::post('/users/download','UsersController@download');
-
-Route::get('/lorem','LoremController@index');
-Route::get('/lorem','LoremController@post');

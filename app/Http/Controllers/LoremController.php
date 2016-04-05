@@ -5,68 +5,43 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use Badcow\LoremIpsum\Generator;
 
 class LoremController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+* Initial page
+*/
+    public function getIndex() {
+        return view('lorem.index');
+    }
+/**
+ * Posts the results
+ */
+
+    public function post(Request $request)
     {
-        //
+        //dd($request->all());
+        //$this->validate($request, [
+        //    'numberOfPharagraps' => 'required|numeric|min:1|max:10',
+        //]);
+
+        $genLorem = new Generator();
+        //$loremData = $genLorem->getParagraphs(1);
+        $loremData = $genLorem->getParagraphs($request['numberOfParagraphs']);
+
+        $jsonFile = json_encode($loremData , JSON_PRETTY_PRINT);
+
+        return view('lorem.index')
+            ->with('loremData', $loremData)
+            ->with('jsonFile', $jsonFile);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function download(Request $request)
     {
-        //
+        header('Content-disposition: attachment; filename=loremIpsum.json');
+        header('Content-type: text/plain');
+        echo $request['jsonFile'];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    
 }

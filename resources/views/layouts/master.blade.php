@@ -32,8 +32,9 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="http://p1.donengs.com">Home</a>
-                    <li><a href="http://p3.donengs.com">Lorem Ipsum Generator</a>
-                    <li><a href="http://p3.donengs.com">Random User Generator</a>
+                    <li><a href="http://p2.donengs.com">Password Generator</a>
+                    <li><a href="http://p3.donengs.com/lorem">Lorem Ipsum Generator</a>
+                    <li><a href="http://p3.donengs.com/users">Random User Generator</a>
                     <li><a href="http://p4.donengs.com">Final Project</a>
                 </ul>
             </div>

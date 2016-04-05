@@ -10,7 +10,7 @@ use Faker\Factory as Faker;
 class UsersController extends Controller
 {
 
-    public function index()
+    public function getIndex()
     {
         //return view('users.index');
         //$fakeUsers = $this->generateFakeUsers(1, 1, 1, 1, 1, 1, 1);
