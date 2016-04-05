@@ -21,7 +21,6 @@ class LoremController extends Controller
     */
     public function post(Request $request)
     {
-        //dd($request->all());
         $this->validate($request, [
             'numberOfParagraphs' => 'required|numeric|min:1|max:10'
         ]);
