@@ -13,7 +13,7 @@ This is the third project for the Dynamic Web application class. A compilation o
 ----
 ## Demo
 
-[http://www.screencast.com/t/ZFlsO8plMkh](http://www.screencast.com/t/ZFlsO8plMkh)
+[http://www.screencast.com/t/L0cGAfGvl](http://www.screencast.com/t/L0cGAfGvl)
 
 ----
 ## Details for teaching team
