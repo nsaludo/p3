@@ -9,21 +9,25 @@ use Faker\Factory as Faker;
 
 class UsersController extends Controller
 {
-
+    /**
+    * Initial page
+    */
     public function getIndex()
     {
-        //return view('users.index');
-        //$fakeUsers = $this->generateFakeUsers(1, 1, 1, 1, 1, 1, 1);
-
         return view('users.index');
-
     }
 
+    /**
+    * Function to randomly select
+    * a gender to be used in determining
+    * the phtourl
+    */
     private function getGender(){
         $gender_array= array("male","female");
         return $gender_array[rand(0,1)];
     }
 
+    /*Function to generate list of fake users */
     private function generateFakeUsers($numberOfUsers,
                                        $homeAddress,
                                        $emailAddress,
@@ -65,7 +69,7 @@ class UsersController extends Controller
             }
             if ($birthday == 1) {
 				$fakeUsers[$i] = array_merge($fakeUsers[$i], Array('Birthday' => $faker->dateTimeThisCentury->format("Y-m-d")));
-		    } 
+		    }
             if ($photoUrl == 1) {
                 if ($userGender == "male") {
                     $fakeUsers[$i] = array_merge($fakeUsers[$i], Array('PhotoUrl' => $randomMalePhotoUrl[$randomNumAr[$i]]));
@@ -77,22 +81,25 @@ class UsersController extends Controller
         return($fakeUsers);
     }
 
+    /*Function to save phot urls from json file to array */
     private function getPhotoUrlData($jsonFile) {
        $jsonPhotoUrlData = file_get_contents($jsonFile);
        $photoUrlArray = json_decode($jsonPhotoUrlData, true);
        return $photoUrlArray["photo"];
     }
 
+    /*Function to generate an array of unique numbers that will be used to get randon photo urls */
     private function getUniqNums($min, $max, $quantity) {
         $numbers = range($min, $max);
         shuffle($numbers);
         return array_slice($numbers, 0, $quantity);
     }
 
+    /**
+    * Posts the results
+    */
     public function post(Request $request)
     {
-        //dd($request->all());
-
         $this->validate($request, [
             'numberOfUsers' => 'required|numeric|min:1|max:100',
             'homeAddress' => 'boolean',
@@ -118,6 +125,7 @@ class UsersController extends Controller
             ->with('jsonFile', $jsonFile);
     }
 
+    /* Function to download results in a Json file */
     public function download(Request $request)
     {
         header('Content-disposition: attachment; filename=randomUsers.json');

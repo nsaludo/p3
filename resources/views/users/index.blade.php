@@ -1,13 +1,8 @@
 @extends('layouts.master')
 
-
 @section('title')
     Generate Users
 @stop
-
-@section('head')
-@stop
-
 
 @section('content')
     <div class="container">
@@ -126,8 +121,6 @@
                         {{ Form::hidden('jsonFile',$jsonFile)}}
                     {{ Form::submit('Download Json File', array('class' => 'btn btn-default btn-xs btn-block')) }}
                 </div>
-
-
                 <br>
             </div>
 

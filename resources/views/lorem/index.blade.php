@@ -1,13 +1,8 @@
 @extends('layouts.master')
 
-
 @section('title')
-    Generate Users
+    Generate Lorem Ipsum
 @stop
-
-@section('head')
-@stop
-
 
 @section('content')
     <div class="container">

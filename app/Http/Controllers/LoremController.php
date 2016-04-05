@@ -10,15 +10,15 @@ use Badcow\LoremIpsum\Generator;
 class LoremController extends Controller
 {
     /**
-* Initial page
-*/
+    * Initial page
+    */
     public function getIndex() {
         return view('lorem.index');
     }
-/**
- * Posts the results
- */
 
+    /**
+    * Posts the results
+    */
     public function post(Request $request)
     {
         //dd($request->all());

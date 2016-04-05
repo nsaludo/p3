@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/superhero/bootstrap.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/superhero/bootstrap.min.css">
     <link rel="stylesheet" href="css/mystyles.css">
     <!-- Custom CSS -->
     {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
